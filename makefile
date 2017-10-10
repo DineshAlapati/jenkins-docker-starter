@@ -1,19 +1,12 @@
 build:
-	@docker build -t myjenkins jenkins-master/.
-	@docker build -t myjenkinsdata jenkins-data/.
-	@docker build -t myjenkinsnginx jenkins-nginx/.
-run-data:
-	@docker run --name=jenkins-data myjenkinsdata
+	@docker-compose build
 run:
-	@docker run --name=jenkins-master --volumes-from=jenkins-data -d myjenkins
-	@docker run -p 80:80 --name=jenkins-nginx --link jenkins-master:jenkins-master -d myjenkinsnginx
+	@docker-compose up -d
 stop:
-	@docker stop jenkins-master
-	@docker stop jenkins-nginx
+	@docker-compose stop
 clean:	stop
-	@docker rm -v jenkins-master
-	@docker rm -v jenkins-nginx
+	@docker-compose rm jenkinsmaster jenkinsnginx
 clean-data: clean
-	@docker rm -v jenkins-data
+	@docker-compose rm -v jenkinsdata
 clean-images:
 	@docker rmi $(docker images -q --filter="dangling=true")
