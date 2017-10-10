@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.6
 MAINTAINER DineshAlapati
 
 # addgroup and adduser documentation: http://www.unix.com/man-page/linux/8/adduser/
