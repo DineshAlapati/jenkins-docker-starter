@@ -1,4 +1,4 @@
-FROM centos:centos7
+FROM alpine:latest
 MAINTAINER DineshAlapati
 
 RUN yum -y update; yum clean all
