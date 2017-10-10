@@ -1,4 +1,4 @@
-FROM jenkins:latest
+FROM jenkins:1.609.1
 MAINTAINER DineshAlapati
 
 # Create Jenkins Log Folder
@@ -12,4 +12,4 @@ USER jenkins
 
 # Set default options
 ENV JAVA_OPTS="-Xmx8192m"
-ENV JENKINS_OPTS="--handlerCountMax=300 --logfile=/var/log/jenkins/jenkins.log --webroot=/var/cache/jenkins/war"
+ENV JENKINS_OPTS="--handlerCountStartup=100 --handlerCountMax=300 --logfile=/var/log/jenkins/jenkins.log --webroot=/var/cache/jenkins/war"
