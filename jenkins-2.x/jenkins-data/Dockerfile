@@ -7,15 +7,6 @@ RUN addgroup -g 1000 jenkins && \
     mkdir -p /var/log/jenkins && \
     chown -R jenkins:jenkins /var/log/jenkins
 
-COPY jenkinsexport.tar.gz /tmp/jenkinsexport.tar.gz
-COPY jenkinsdefaultsecrets.tar.gz /tmp/jenkinsdefaultsecrets.tar.gz
-
-RUN tar -xvf /tmp/jenkinsexport.tar.gz && \
-    tar -xvf /tmp/jenkinsdefaultsecrets.tar.gz && \
-    rm /tmp/jenkinsexport.tar.gz && \
-    rm /tmp/jenkinsdefaultsecrets.tar.gz && \
-    chown -R jenkins:jenkins /var/jenkins_home
-
 VOLUME ["/var/log/jenkins", "/var/jenkins_home"]
 
 USER jenkins
