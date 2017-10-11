@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.84-alpine
+FROM jenkins/jenkins:alpine
 MAINTAINER DineshAlapati
 
 # Create Jenkins Log Folder
