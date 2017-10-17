@@ -10,3 +10,5 @@ clean-data: clean
 	@docker-compose -p jenkins rm -v data
 clean-images:
 	@docker rmi `docker images -q -f "dangling=true"`
+upgrade:
+	./jenkins-master/jenkins-upgrade.sh
