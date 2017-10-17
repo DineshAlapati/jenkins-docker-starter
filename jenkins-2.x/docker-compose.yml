@@ -4,8 +4,6 @@ master:
  build: jenkins-master
  volumes_from:
   - data
- volumes:
-  - ./jenkinslocation.txt:/myfiles/jenkinslocation.txt
  ports:
   - "8080:8080"
   - "50000:50000"
