@@ -8,6 +8,17 @@ RUN mkdir /var/log/jenkins \
     && chown -R jenkins:jenkins /var/log/jenkins \
     && chown -R jenkins:jenkins /var/cache/jenkins
 
+# Install maven
+ENV MAVEN_VERSION 3.5.0
+ENV MAVEN_HOME /usr/lib/maven
+ENV PATH $MAVEN_HOME/bin:$PATH
+
+RUN cd /tmp && \
+    wget -q http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz -O - | tar xzf - && \
+    mv /tmp/apache-maven-$MAVEN_VERSION /usr/lib/maven && \
+    ln -s /usr/lib/maven/bin/mvn /usr/bin/mvn && \
+    rm -rf /tmp/*
+
 USER jenkins
 
 # Setting number of executors
