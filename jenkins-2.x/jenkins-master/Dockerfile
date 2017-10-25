@@ -4,9 +4,7 @@ MAINTAINER DineshAlapati
 # Create Jenkins Log Folder
 USER root
 RUN mkdir /var/log/jenkins \
-    && mkdir /var/cache/jenkins \
-    && chown -R jenkins:jenkins /var/log/jenkins \
-    && chown -R jenkins:jenkins /var/cache/jenkins
+    && mkdir /var/cache/jenkins
 
 # Install maven
 ENV MAVEN_VERSION 3.5.0
@@ -18,8 +16,6 @@ RUN cd /tmp && \
     mv /tmp/apache-maven-$MAVEN_VERSION /usr/lib/maven && \
     ln -s /usr/lib/maven/bin/mvn /usr/bin/mvn && \
     rm -rf /tmp/*
-
-USER jenkins
 
 # Setting number of executors
 COPY executors.groovy /usr/share/jenkins/ref/init.groovy.d/executors.groovy
